@@ -1,0 +1,7 @@
+{
+    "representation": "tfidf",
+    "MAP": 0.4366,
+    "MRR": 0.4649,
+    "P@10": 0.0719,
+    "Recall@10": 0.5405
+}

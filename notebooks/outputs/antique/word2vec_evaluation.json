@@ -1,0 +1,8 @@
+{
+    "representation": "word2vec",
+    "dataset": "antique",
+    "MAP": 0.0363,
+    "MRR": 0.4539,
+    "P@10": 0.173,
+    "Recall@10": 0.0534
+}

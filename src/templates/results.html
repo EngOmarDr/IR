@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>نتائج البحث</title>
+</head>
+<body>
+    <h2>نتائج البحث عن: "{{ query }}"</h2>
+    <ul>
+        {% for result in results %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">بحث جديد</a>
+</body>
+</html>

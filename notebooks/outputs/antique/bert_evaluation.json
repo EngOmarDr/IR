@@ -1,0 +1,8 @@
+{
+    "representation": "bert",
+    "dataset": "antique",
+    "MAP": 0.0956,
+    "MRR": 0.7544,
+    "P@10": 0.3715,
+    "Recall@10": 0.1214
+}

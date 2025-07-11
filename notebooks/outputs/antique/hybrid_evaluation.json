@@ -1,0 +1,8 @@
+{
+    "representation": "hybrid",
+    "dataset": "antique",
+    "MAP": 0.096,
+    "MRR": 0.7608,
+    "P@10": 0.376,
+    "Recall@10": 0.123
+}

@@ -1,0 +1,7 @@
+{
+    "representation": "word2vec",
+    "MAP": 0.3001,
+    "MRR": 0.3278,
+    "P@10": 0.0501,
+    "Recall@10": 0.3835
+}

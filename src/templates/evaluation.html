@@ -1,0 +1,50 @@
+<!-- http://localhost:5000/evaluation -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Evaluation Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Evaluation Metrics by Representation</h1>
+    <table>
+        <tr>
+            <th>Representation</th>
+            <th>MAP</th>
+            <th>MRR</th>
+            <th>P@10</th>
+            <th>Recall@10</th>
+        </tr>
+        {% for item in evaluations %}
+        <tr>
+            <td>{{ item.representation.upper() }}</td>
+            <td>{{ item.MAP }}</td>
+            <td>{{ item.MRR }}</td>
+            <td>{{ item["P@10"] }}</td>
+            <td>{{ item["Recall@10"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

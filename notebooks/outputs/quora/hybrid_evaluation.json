@@ -1,0 +1,7 @@
+{
+    "representation": "hybrid",
+    "MAP": 0.5057,
+    "MRR": 0.5297,
+    "P@10": 0.0827,
+    "Recall@10": 0.6001
+}

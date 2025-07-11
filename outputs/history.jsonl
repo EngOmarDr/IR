@@ -1,0 +1,118 @@
+{"query": "ha", "dataset": "quora", "timestamp": "2025-06-25 01:47:17.418749"}
+{"query": "ha", "dataset": "quora", "timestamp": "2025-06-25 01:47:52.009821"}
+{"query": "ha", "dataset": "quora", "timestamp": "2025-06-25 02:22:23.179134"}
+{"query": "ha", "dataset": "quora", "timestamp": "2025-06-25 02:26:13.820093"}
+{"query": "eat Food", "dataset": "quora", "timestamp": "2025-06-25 02:39:40.416980"}
+{"query": "eating banan", "dataset": "quora", "timestamp": "2025-06-25 02:46:11.131534"}
+{"query": "eating banan for breakefast", "dataset": "quora", "timestamp": "2025-06-25 02:50:38.839710"}
+{"query": "eat", "dataset": "quora", "timestamp": "2025-06-28 03:05:17.331591"}
+{"query": "eat", "dataset": "quora", "timestamp": "2025-06-28 03:15:53.198784"}
+{"query": "hugger", "dataset": "quora", "timestamp": "2025-06-28 03:20:25.429654"}
+{"query": "goal", "dataset": "quora", "timestamp": "2025-06-28 23:55:33.415913"}
+{"query": "what is docker", "dataset": "quora", "timestamp": "2025-06-29 00:05:11.082578"}
+{"query": "kbhbaed", "dataset": "quora", "timestamp": "2025-06-29 01:02:00.543238"}
+{"query": "linear mapping please", "dataset": "quora", "timestamp": "2025-06-29 01:10:48.769379"}
+{"query": "aat", "dataset": "quora", "timestamp": "2025-06-29 02:24:42.853656"}
+{"query": "aat", "dataset": "quora", "timestamp": "2025-06-29 02:27:51.232098"}
+{"query": "aat", "dataset": "quora", "timestamp": "2025-06-29 02:43:21.087546"}
+{"query": "eat", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 15:11:43.088340"}
+{"query": "eat", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-01 15:12:48.190690"}
+{"query": "eat", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 15:13:16.607191"}
+{"query": "eat", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-01 15:19:37.109121"}
+{"query": "eat", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-01 16:07:38.050090"}
+{"query": "hello", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 16:09:24.795325"}
+{"query": "gituogd", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 16:09:54.167575"}
+{"query": "\u0634\u0643\u0634\u0629\u064a", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 16:11:24.956626"}
+{"query": "sdf", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 16:11:39.883064"}
+{"query": "rang", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-01 16:11:59.111219"}
+{"query": "rang", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:26:56.897762"}
+{"query": "ask me some thing", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:30:14.299876"}
+{"query": "car", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:54:21.349899"}
+{"query": "car", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:54:43.168282"}
+{"query": "eat", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:55:29.505746"}
+{"query": "aa", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:56:11.462476"}
+{"query": "What is machine learning?", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 16:57:54.730341"}
+{"query": "What is machine learning?", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 17:04:39.408198"}
+{"query": "What is machine learning?", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-01 17:44:55.153228"}
+{"query": "what is machine learning?", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 01:52:53.136811"}
+{"query": "Who is Albert Einstein", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 01:54:25.181084"}
+{"query": "hello", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-02 02:59:09.932652"}
+{"query": "hello my srilakd", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-02 02:59:25.704554"}
+{"query": "hello my srilakd", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-02 02:59:43.898391"}
+{"query": "hello my srilakd", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-02 03:05:49.649813"}
+{"query": "Who is Albert Einstein", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:25:31.107431"}
+{"query": "Who is Albert Einstein", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:34:22.968429"}
+{"query": "Who is Albert Einstein", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:40:15.988275"}
+{"query": "What is the theory of relativity", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:42:27.951003"}
+{"query": "Explain quantum mechanics", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:43:01.952620"}
+{"query": "invest share market", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:45:23.050353"}
+{"query": "how are you", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 03:49:36.155157"}
+{"query": "how are you", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 04:27:32.913028"}
+{"query": "What is the approx", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-02 04:28:00.155457"}
+{"query": "file database ", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-02 09:26:21.143251"}
+{"query": "file database ", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-02 09:27:00.807080"}
+{"query": "file database ", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-02 09:27:27.116515"}
+{"query": "file database ", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-02 09:27:59.872824"}
+{"query": "file database ", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-02 09:29:16.393748"}
+{"query": "file database ", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-02 09:33:46.843672"}
+{"query": "hello database vector", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-03 08:52:25.029857"}
+{"query": "hello database vector", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-03 08:52:39.394553"}
+{"query": "hello database vector", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-03 08:53:17.234874"}
+{"query": "hello database vector", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-03 09:17:56.620329"}
+{"query": "hello database vector", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-03 09:23:05.153435"}
+{"query": "hello database vector", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-03 09:26:45.195901"}
+{"query": "database", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-03 09:27:21.164515"}
+{"query": "code", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-03 09:27:58.147161"}
+{"query": "code", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-03 09:28:58.773901"}
+{"query": "database ", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-05 14:17:53.646973"}
+{"query": "database ", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-05 14:18:17.886772"}
+{"query": "database ", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-05 14:18:42.697075"}
+{"query": "database ", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-05 14:20:18.390584"}
+{"query": "database ", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-05 14:21:32.977148"}
+{"query": "database ", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-05 14:21:34.503275"}
+{"query": "database ", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-05 14:21:51.347939"}
+{"query": "database ", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-05 14:22:19.424118"}
+{"query": "database ", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-05 14:22:38.158577"}
+{"query": "database ", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-05 14:23:00.804782"}
+{"query": "hello", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-06 00:34:57.363126"}
+{"query": "word", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-06 00:36:23.196541"}
+{"query": "apple", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-06 00:41:46.615920"}
+{"query": "pc", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:42:43.631527"}
+{"query": "computer", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:43:13.484149"}
+{"query": "vector", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:44:22.081102"}
+{"query": "vector", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:44:25.876889"}
+{"query": "flight ", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:44:58.935566"}
+{"query": "airplane", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:45:32.607380"}
+{"query": "useState", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:45:59.611925"}
+{"query": "useState()", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:46:08.218962"}
+{"query": "useState() hook", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:46:44.384349"}
+{"query": "what's react", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:47:18.140649"}
+{"query": "what's programming language react", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:47:54.467276"}
+{"query": "aple", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:48:31.632221"}
+{"query": "aple", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:48:36.735270"}
+{"query": "aple fruite", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:49:09.189039"}
+{"query": "Why doesn't the water fall off  earth if it's round?", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-06 00:50:14.461883"}
+{"query": "database", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-10 03:06:44.572328"}
+{"query": "database", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-10 03:51:42.765736"}
+{"query": "database", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-10 03:52:12.428522"}
+{"query": "database", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 03:52:58.140359"}
+{"query": "database", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-10 03:55:06.205652"}
+{"query": "database", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-10 03:56:59.559547"}
+{"query": "database", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-10 03:57:34.087458"}
+{"query": "database", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 03:58:00.991208"}
+{"query": "database", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-10 03:58:20.458313"}
+{"query": "database", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-10 03:58:32.583421"}
+{"query": "database", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-10 03:58:44.252436"}
+{"query": "database", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 03:59:50.227187"}
+{"query": "database", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-10 04:01:46.397560"}
+{"query": "database", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-10 04:03:06.089011"}
+{"query": "database", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-10 04:18:37.112716"}
+{"query": "database", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 04:19:57.088319"}
+{"query": "database", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 04:23:06.791630"}
+{"query": "database", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 04:34:09.986102"}
+{"query": "vector store", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:34:13.721408"}
+{"query": "donkey", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:36:30.003537"}
+{"query": "donkey", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:39:07.207048"}
+{"query": "donkey", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:40:39.329811"}
+{"query": "apple", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:43:44.614004"}
+{"query": "apple", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 07:04:14.172267"}
