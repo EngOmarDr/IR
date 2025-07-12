@@ -9,6 +9,8 @@ from transformers import AutoTokenizer, AutoModel
 import torch
 from scipy.sparse import hstack
 from preprocessing import clean_text
+from scipy.sparse import issparse
+
 
 # ----------------------------- 🔹 Utility 🔹 -----------------------------
 def load_clean_texts(jsonl_path, field='text'):
@@ -120,15 +122,26 @@ def build_hybrid(tfidf_matrix_path, bert_vectors_path, output_path):
     assert tfidf_ids == bert_ids, "❌ IDs mismatch between TF-IDF and BERT!"
 
     print("🔗 [Hybrid] دمج التمثيلين ...")
-    bert_matrix = np.vstack(bert_vectors)  # still dense
-    # ✅ استخدم hstack لتفادي toarray
-    hybrid_vectors = hstack([tfidf_matrix, bert_matrix])
+
+    # ✅ تأكد أن BERT هو dense NumPy matrix
+    bert_matrix = np.vstack(bert_vectors).astype(np.float32)
+
+    # ✅ دمج sparse + dense باستخدام hstack
+    from scipy.sparse import hstack, csr_matrix
+    bert_sparse = csr_matrix(bert_matrix)  # تحويل bert إلى sparse لتوافق الدمج
+
+    from scipy.sparse import hstack
+    hybrid_sparse = hstack([tfidf_matrix, bert_sparse])
+     # ⛳ حوله إلى dense مسبقًا
+
 
     print("💾 [Hybrid] حفظ التمثيلات المدمجة ...")
     ensure_dir(output_path)
-    joblib.dump((tfidf_ids, hybrid_vectors), output_path)
+    joblib.dump((tfidf_ids, hybrid_sparse), output_path)
 
     print("✅ [Hybrid] تم بناء التمثيل الهجين بنجاح.")
+
+
 
 
 
@@ -140,28 +153,28 @@ if __name__ == "__main__":
 
     corpus_path = os.path.join(data_dir, "cleaned_corpus.jsonl")
 
-    # ✅ 1. تمثيل TF-IDF
-    build_tfidf(
-        corpus_path=corpus_path,
-        vectorizer_path=os.path.join(vector_store, f"{dataset}_tfidf_vectorizer.joblib"),
-        matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib")
-    )
+    # # ✅ 1. تمثيل TF-IDF
+    # build_tfidf(
+    #     corpus_path=corpus_path,
+    #     vectorizer_path=os.path.join(vector_store, f"{dataset}_tfidf_vectorizer.joblib"),
+    #     matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib")
+    # )
 
-    # ✅ 2. تمثيل Word2Vec
-    build_word2vec(
-    corpus_path=corpus_path,
-    model_path=os.path.join(vector_store, f"{dataset}_word2vec.model"),
-    matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
-    vectorizer_path=os.path.join(vector_store, f"{dataset}_word2vec_vectorizer.joblib")  # ✅ الجديد
-    )
+    # # ✅ 2. تمثيل Word2Vec
+    # build_word2vec(
+    # corpus_path=corpus_path,
+    # model_path=os.path.join(vector_store, f"{dataset}_word2vec.model"),
+    # matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
+    # vectorizer_path=os.path.join(vector_store, f"{dataset}_word2vec_vectorizer.joblib")  # ✅ الجديد
+    # )
 
-        # ✅ 3. تمثيل BERT
-    build_bert(
-        corpus_path=corpus_path,
-        model_path=None,  # لا حاجة لحفظ النموذج منفصلًا
-        matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
-        vectorizer_path=os.path.join(vector_store, f"{dataset}_bert_vectorizer.joblib")  # ✅ الجديد
-    )
+    #     # ✅ 3. تمثيل BERT
+    # build_bert(
+    #     corpus_path=corpus_path,
+    #     model_path=None,  # لا حاجة لحفظ النموذج منفصلًا
+    #     matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
+    #     vectorizer_path=os.path.join(vector_store, f"{dataset}_bert_vectorizer.joblib")  # ✅ الجديد
+    # )
 
     # ✅ 4. Hybrid = TF-IDF + BERT
     build_hybrid(

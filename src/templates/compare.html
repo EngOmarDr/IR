@@ -1,0 +1,54 @@
+<h2>مقارنة النتائج حسب التمثيل</h2>
+<label>Query:</label>
+<input id="compare-query" placeholder="اكتب الاستعلام هنا">
+<button id="compare-btn" onclick="compare()">Compare</button>
+<span id="compare-loading" style="display:none;">⏳ جاري المعالجة...</span>
+<pre id="compare-output"></pre>
+<button onclick="downloadJSON('compare-output')">⬇️ Download JSON</button>
+
+<script>
+async function compare(){
+  const q = document.getElementById('compare-query').value;
+  const reps = ["tfidf","word2vec","bert","hybrid"];
+  const out = {};
+
+  const btn = document.getElementById('compare-btn');
+  const loader = document.getElementById('compare-loading');
+  btn.disabled = true;
+  loader.style.display = 'inline';
+
+  try {
+    for (let rep of reps) {
+      const res = await fetch(`/search/${rep}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: q, dataset: "quora" })
+      });
+      out[rep] = await res.json();
+    }
+    document.getElementById('compare-output').textContent = JSON.stringify(out, null, 2);
+  } catch (e) {
+    document.getElementById('compare-output').textContent = "❌ حدث خطأ أثناء الطلب";
+  } finally {
+    btn.disabled = false;
+    loader.style.display = 'none';
+  }
+}
+
+// دالة تحميل JSON لأي عنصر <pre>
+function downloadJSON(elementId) {
+  const content = document.getElementById(elementId).textContent;
+  if (!content.trim()) {
+    alert("⚠️ لا يوجد محتوى لتحميله!");
+    return;
+  }
+
+  const blob = new Blob([content], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${elementId}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>

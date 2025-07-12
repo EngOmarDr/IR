@@ -319,7 +319,15 @@ def topic_modeling():
         return jsonify(topic_words)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
 
+@app.route("/test-api")
+def test_api():
+    return render_template("test_api.html")
+
+@app.route("/compare")
+def compare_page():
+    return render_template("compare.html")
 
 
 if __name__ == "__main__":

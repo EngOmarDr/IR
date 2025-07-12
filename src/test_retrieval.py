@@ -1,25 +1,26 @@
-# src/test_retrieval.py
-
-import json
+from src.indexing import build_index
+from src.retrieval import retrieve_top_k_index
 import joblib
-from retrieval import retrieve_top_k_index
-from preprocessing import clean_text
+import os
 
-# تحميل البيانات
-with open("data/quora/cleaned_corpus.jsonl", "r", encoding="utf-8") as f:
-    corpus = {json.loads(line)["_id"]: json.loads(line) for line in f}
+# تحميل الموارد
+dataset = "antique"
+vector_store = "vector_stores"
+corpus_path = os.path.join("data", dataset, "cleaned_corpus.jsonl")
+corpus = {}
+with open(corpus_path, "r", encoding="utf-8") as f:
+    for line in f:
+        doc = json.loads(line)
+        corpus[doc["_id"]] = {"text": doc["text"]}
 
-# تحميل النموذج والفهرس
-vectorizer = joblib.load("vector_stores/quora_tfidf_vectorizer.joblib")
-doc_ids, index = joblib.load("vector_stores/quora_tfidf_index.joblib")
+# تحميل الفهرس والـ vectorizer
+doc_ids, index = joblib.load(os.path.join(vector_store, f"{dataset}_bert_index.docids"))  # لو استخدمت faiss
+vectorizer = (tokenizer_bert, model_bert)  # حسب التعديل
 
-# استعلام حقيقي
-query = "What is the best way to learn AI?"
+query = "نص الاستعلام هنا"
+results = retrieve_top_k_index(query, vectorizer, index, doc_ids, corpus, top_k=5)
 
-results = retrieve_top_k_index(query, vectorizer, index, doc_ids, corpus)
-
-for r in results:
-    print("📄", r["doc_id"])
-    print("📝", r["text"])
-    print("📊 Score:", round(r["score"], 3))
-    print("-" * 50)
+for res in results:
+    print(res["doc_id"], res["score"])
+    print(res["text"][:300])
+    print("----")

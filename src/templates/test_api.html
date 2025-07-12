@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🛠️ API Testing Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 40px; }
+    h1, h2 { text-align: center; }
+    section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 800px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    textarea, input, button, select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button.loading {
+      background-color: #ccc;
+      cursor: wait;
+    }
+    button:hover:not(.loading) {
+      background-color: #2980b9;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛠️ API Testing Interface</h1>
+
+  <section>
+    <h2>1. 🔄 Test RAG (/rag)</h2>
+    <label>Query:</label>
+    <input id="rag-query" placeholder="Enter your query">
+    <label>Contexts (one per line):</label>
+    <textarea id="rag-contexts" rows="5" placeholder="Paste context texts here..."></textarea>
+    <button id="rag-btn" onclick="testRAG()">Submit</button>
+    <h4>Response:</h4>
+    <pre id="rag-response"></pre>
+    <button onclick="downloadJSON('rag-response')">⬇️ Download JSON</button>
+
+  </section>
+
+  <section>
+    <h2>2. 🧹 Clean Text (/clean_text)</h2>
+    <textarea id="clean-text-input" rows="3" placeholder="Enter raw text..."></textarea>
+    <button id="clean-btn" onclick="testCleanText()">Clean</button>
+    <h4>Cleaned Text:</h4>
+    <pre id="clean-text-output"></pre>
+    <button onclick="downloadJSON('clean-text-output')">⬇️ Download JSON</button>
+
+  </section>
+
+  <section>
+    <h2>3. 📑 Topic Modeling (/topics)</h2>
+    <label>Dataset:</label>
+    <select id="topic-dataset">
+      <option value="quora">quora</option>
+      <option value="antique">antique</option>
+    </select>
+    <label>Number of Topics:</label>
+    <input type="number" id="topic-number" value="5" min="2" max="20">
+    <button id="topic-btn" onclick="testTopics()">Generate Topics</button>
+    <h4>Output:</h4>
+    <pre id="topic-output"></pre>
+    <button onclick="downloadJSON('topic-output')">⬇️ Download JSON</button>
+
+  </section>
+
+  <script>
+    async function testRAG() {
+      const btn = document.getElementById("rag-btn");
+      btn.classList.add("loading");
+      btn.textContent = "Loading...";
+      try {
+        const query = document.getElementById("rag-query").value;
+        const contexts = document.getElementById("rag-contexts").value.split("\n").filter(x => x.trim() !== "");
+
+        const res = await fetch("/rag", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query, contexts })
+        });
+        const data = await res.json();
+        document.getElementById("rag-response").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("rag-response").textContent = "❌ Error: " + err.message;
+      } finally {
+        btn.classList.remove("loading");
+        btn.textContent = "Submit";
+      }
+    }
+
+    async function testCleanText() {
+      const btn = document.getElementById("clean-btn");
+      btn.classList.add("loading");
+      btn.textContent = "Cleaning...";
+      try {
+        const rawText = document.getElementById("clean-text-input").value;
+        const res = await fetch("/clean_text", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: rawText })
+        });
+        const data = await res.json();
+        document.getElementById("clean-text-output").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("clean-text-output").textContent = "❌ Error: " + err.message;
+      } finally {
+        btn.classList.remove("loading");
+        btn.textContent = "Clean";
+      }
+    }
+
+    async function testTopics() {
+      const btn = document.getElementById("topic-btn");
+      btn.classList.add("loading");
+      btn.textContent = "Generating...";
+      try {
+        const dataset = document.getElementById("topic-dataset").value;
+        const n_topics = document.getElementById("topic-number").value;
+        const res = await fetch("/topics", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ dataset, n_topics })
+        });
+        const data = await res.json();
+        document.getElementById("topic-output").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("topic-output").textContent = "❌ Error: " + err.message;
+      } finally {
+        btn.classList.remove("loading");
+        btn.textContent = "Generate Topics";
+      }
+    }
+
+    function downloadJSON(elementId) {
+        const content = document.getElementById(elementId).textContent;
+        if (!content.trim()) {
+            alert("No content to download!");
+            return;
+        }
+
+        const blob = new Blob([content], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${elementId}.json`;
+        a.click();
+
+        URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

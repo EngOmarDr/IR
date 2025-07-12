@@ -13,9 +13,14 @@ from evaluation_utils import (
 from transformers import AutoTokenizer, AutoModel
 import torch
 from tabulate import tabulate
+from preprocessing import clean_text
+import faiss
+
+def custom_tokenizer(text):
+    return clean_text(text).split()
 
 # 👇 عدل هذا السطر فقط لاختيار الداتا
-DATASET = "quora"  # ← غيّره إلى "quora" أو "antique" حسب الحاجة
+DATASET = "antique"  # ← غيّره إلى "quora" أو "antique" حسب الحاجة
 TOP_K = 10
 REPRESENTATIONS = ["tfidf", "word2vec", "bert", "hybrid"]
 
@@ -47,21 +52,35 @@ def load_queries(path):
     return queries
 
 def load_resources(representation):
-    index_path = os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_index.joblib")
-    doc_ids, index = joblib.load(index_path)
-
     if representation == "bert":
+        # ✅ BERT يستخدم FAISS
+        index_path = os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_index.index")
+        doc_ids_path = os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_index.docids")
+        index = faiss.read_index(index_path)
+        doc_ids = joblib.load(doc_ids_path)
+
         tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
         model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
         vectorizer = (tokenizer, model)
+
     elif representation == "hybrid":
+        # ✅ HYBRID يستخدم NearestNeighbors
+        index_path = os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_index.joblib")
+        doc_ids, index = joblib.load(index_path)
+
         tfidf_vectorizer = joblib.load(os.path.join(VECTOR_STORE, f"{DATASET}_tfidf_vectorizer.joblib"))
         tokenizer, model = joblib.load(os.path.join(VECTOR_STORE, f"{DATASET}_bert_vectorizer.joblib"))
         vectorizer = (tfidf_vectorizer, tokenizer, model)
+
     else:
+        # ✅ TF-IDF و Word2Vec يستخدمان joblib
+        index_path = os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_index.joblib")
+        doc_ids, index = joblib.load(index_path)
         vectorizer = joblib.load(os.path.join(VECTOR_STORE, f"{DATASET}_{representation}_vectorizer.joblib"))
 
     return vectorizer, index, doc_ids
+
+
 
 def evaluate_representation(rep, queries, qrels, corpus):
     print(f"\n📊 Evaluating representation: {rep.upper()} for dataset: {DATASET.upper()}")
