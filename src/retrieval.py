@@ -35,20 +35,22 @@ def retrieve_top_k_index(query_text, vectorizer, index, doc_ids, corpus, top_k=1
             query_vector = embedding.reshape(1, -1)
 
     elif isinstance(vectorizer, tuple) and len(vectorizer) == 3:
-        # ✅ Hybrid = TF-IDF + BERT
+        # ✅ Hybrid = TF-IDF + BERT → لكن نجعله dense الآن
         tfidf_vectorizer, tokenizer, model = vectorizer
         model.eval()
 
-        tfidf_vec = tfidf_vectorizer.transform([query_cleaned])  # هذا يبقى sparse
+        tfidf_vec = tfidf_vectorizer.transform([query_cleaned])
+        if issparse(tfidf_vec):
+            tfidf_vec = tfidf_vec.toarray().astype(np.float32)  # ← 👈 تحويله إلى dense
 
         with torch.no_grad():
             inputs = tokenizer(query_cleaned, return_tensors='pt', truncation=True, padding=True)
             outputs = model(**inputs)
-            bert_vec = outputs.last_hidden_state.mean(dim=1).squeeze().numpy().reshape(1, -1)
+            bert_vec = outputs.last_hidden_state.mean(dim=1).squeeze().numpy().astype(np.float32).reshape(1, -1)
 
-        from scipy.sparse import hstack, csr_matrix
-        bert_sparse = csr_matrix(bert_vec)
-        query_vector = hstack([tfidf_vec, bert_sparse])  # ✅ الآن query_vector يبقى sparse
+        # 👇 هنا ندمج كـ numpy مباشرة
+        query_vector = np.hstack([tfidf_vec, bert_vec])  # ← 👈 بدلاً من hstack sparse
+
 
 
     else:
@@ -61,10 +63,8 @@ def retrieve_top_k_index(query_text, vectorizer, index, doc_ids, corpus, top_k=1
             query_vector = query_vector.reshape(1, -1)
         distances, indices = index.search(query_vector, top_k)
     else:
-        if not hasattr(index, 'kneighbors'):
-            index_model = NearestNeighbors(n_neighbors=top_k, metric='cosine', algorithm='brute')
-            index_model.fit(index)  # ⛳ مباشرة بدون تحويل إلى dense
-            index = index_model
+        if issparse(query_vector):
+            query_vector = query_vector.tocsr()
 
         distances, indices = index.kneighbors(query_vector, n_neighbors=top_k)
 

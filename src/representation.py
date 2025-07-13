@@ -147,34 +147,34 @@ def build_hybrid(tfidf_matrix_path, bert_vectors_path, output_path):
 
 # -------------------------- 🔹 MAIN 🔹 --------------------------
 if __name__ == "__main__":
-    dataset = "antique"  # بدلًا من "quora"
+    dataset = "quora"  # بدلًا من "quora"
     data_dir = f"data/{dataset}"
     vector_store = "vector_stores"
 
     corpus_path = os.path.join(data_dir, "cleaned_corpus.jsonl")
 
-    # # ✅ 1. تمثيل TF-IDF
-    # build_tfidf(
-    #     corpus_path=corpus_path,
-    #     vectorizer_path=os.path.join(vector_store, f"{dataset}_tfidf_vectorizer.joblib"),
-    #     matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib")
-    # )
+    # ✅ 1. تمثيل TF-IDF
+    build_tfidf(
+        corpus_path=corpus_path,
+        vectorizer_path=os.path.join(vector_store, f"{dataset}_tfidf_vectorizer.joblib"),
+        matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib")
+    )
 
-    # # ✅ 2. تمثيل Word2Vec
-    # build_word2vec(
-    # corpus_path=corpus_path,
-    # model_path=os.path.join(vector_store, f"{dataset}_word2vec.model"),
-    # matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
-    # vectorizer_path=os.path.join(vector_store, f"{dataset}_word2vec_vectorizer.joblib")  # ✅ الجديد
-    # )
+    # ✅ 2. تمثيل Word2Vec
+    build_word2vec(
+    corpus_path=corpus_path,
+    model_path=os.path.join(vector_store, f"{dataset}_word2vec.model"),
+    matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
+    vectorizer_path=os.path.join(vector_store, f"{dataset}_word2vec_vectorizer.joblib")  # ✅ الجديد
+    )
 
-    #     # ✅ 3. تمثيل BERT
-    # build_bert(
-    #     corpus_path=corpus_path,
-    #     model_path=None,  # لا حاجة لحفظ النموذج منفصلًا
-    #     matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
-    #     vectorizer_path=os.path.join(vector_store, f"{dataset}_bert_vectorizer.joblib")  # ✅ الجديد
-    # )
+        # ✅ 3. تمثيل BERT
+    build_bert(
+        corpus_path=corpus_path,
+        model_path=None,  # لا حاجة لحفظ النموذج منفصلًا
+        matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
+        vectorizer_path=os.path.join(vector_store, f"{dataset}_bert_vectorizer.joblib")  # ✅ الجديد
+    )
 
     # ✅ 4. Hybrid = TF-IDF + BERT
     build_hybrid(

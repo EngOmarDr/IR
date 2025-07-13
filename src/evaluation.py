@@ -130,7 +130,7 @@ def evaluate_rag(queries, qrels, corpus, vectorizer, index, doc_ids):
     p_at_10 = sum(precision_at_k(predictions[q], qrels.get(q, []), k=10) for q in queries) / len(queries)
     recall = sum(recall_at_k(predictions[q], qrels.get(q, []), k=10) for q in queries) / len(queries)
 
-    return {
+    result_data = {
         "representation": "rag",
         "dataset": DATASET,
         "MAP": round(map_score, 4),
@@ -138,6 +138,14 @@ def evaluate_rag(queries, qrels, corpus, vectorizer, index, doc_ids):
         "P@10": round(p_at_10, 4),
         "Recall@10": round(recall, 4)
     }
+
+    # ✅ حفظ النتائج في ملف JSON
+    output_file = os.path.join(OUTPUT_DIR, f"rag_evaluation.json")
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(result_data, f, indent=4, ensure_ascii=False)
+
+    return result_data
+
 
 
 if __name__ == "__main__":
@@ -147,6 +155,7 @@ if __name__ == "__main__":
 
     all_results = []
 
+    # ✅ تقييم التمثيلات التقليدية
     for rep in REPRESENTATIONS:
         output_file = os.path.join(OUTPUT_DIR, f"{rep}_evaluation.json")
 
@@ -170,6 +179,25 @@ if __name__ == "__main__":
                 result["Recall@10"]
             ])
 
+    # ✅ تقييم RAG باستخدام نفس موارد BERT
+    print("\n🚀 Evaluating with RAG...")
+    try:
+        rag_vectorizer, rag_index, rag_doc_ids = load_resources("hybrid")  # أو "hybrid" إذا أردت
+        rag_result = evaluate_rag(queries, qrels, corpus, rag_vectorizer, rag_index, rag_doc_ids)
+
+        all_results.append([
+            rag_result["dataset"].upper(),
+            rag_result["representation"].upper(),
+            rag_result["MAP"],
+            rag_result["MRR"],
+            rag_result["P@10"],
+            rag_result["Recall@10"]
+        ])
+    except Exception as e:
+        print(f"❌ Error while evaluating RAG: {e}")
+
+    # ✅ طباعة الجدول النهائي
     headers = ["Dataset", "Representation", "MAP", "MRR", "P@10", "Recall@10"]
     print("\n📊 Final Evaluation Results:")
     print(tabulate(all_results, headers=headers, tablefmt="fancy_grid"))
+

@@ -22,7 +22,7 @@ def clean_text(text):
     # تصغير الحروف
     text = text.lower()
     
-    # ✅ استخدام tokenizer البديل
+    # ✅ قسيم الجملة إلى كلمات
     tokens = tokenizer.tokenize(text)
 
     # حذف الكلمات الشائعة

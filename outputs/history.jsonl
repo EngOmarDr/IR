@@ -116,3 +116,26 @@
 {"query": "donkey", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:40:39.329811"}
 {"query": "apple", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-10 06:43:44.614004"}
 {"query": "apple", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-10 07:04:14.172267"}
+{"query": "hamza", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-11 05:11:50.892282"}
+{"query": "hamza", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-11 05:12:24.884479"}
+{"query": "how can database language", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-11 17:19:32.510831"}
+{"query": "how can database language", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-11 17:19:55.365048"}
+{"query": "how can database language", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-11 17:21:57.266353"}
+{"query": "how can database language", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-11 17:22:28.403143"}
+{"query": "how can database language", "dataset": "quora", "representation": "word2vec", "timestamp": "2025-07-11 17:22:42.608020"}
+{"query": "how can database language", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-11 17:23:47.489015"}
+{"query": "how can database language python", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-11 17:24:32.179991"}
+{"query": "how can database language python", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-11 17:24:55.318777"}
+{"query": "what is hyprid", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-11 22:51:01.768542"}
+{"query": "what is hyprid", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-11 22:58:42.857061"}
+{"query": "what is hybrid", "dataset": "quora", "representation": "hybrid", "timestamp": "2025-07-11 22:59:28.808408"}
+{"query": "What is machine learning?", "dataset": "antique", "representation": "bert", "timestamp": "2025-07-12 12:59:46.371193"}
+{"query": "What is machine learning?", "dataset": "quora", "representation": "bert", "timestamp": "2025-07-12 13:02:30.832394"}
+{"query": "What is machine learning?", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-12 13:02:57.682279"}
+{"query": "what is vector space model?", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-12 13:07:22.542380"}
+{"query": "What is artificial intelligence?", "dataset": "antique", "representation": "tfidf", "timestamp": "2025-07-12 13:09:13.687644"}
+{"query": "What is artificial intelligence?", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-12 13:10:20.021146"}
+{"query": "What is artificial intelligence?", "dataset": "antique", "representation": "word2vec", "timestamp": "2025-07-12 13:13:11.697903"}
+{"query": "What is artificial intelligence?", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-12 13:33:30.942681"}
+{"query": "What is artificial intelligence?", "dataset": "quora", "representation": "tfidf", "timestamp": "2025-07-12 14:43:44.891154"}
+{"query": "What is artificial intelligence?", "dataset": "antique", "representation": "hybrid", "timestamp": "2025-07-12 15:40:34.738783"}

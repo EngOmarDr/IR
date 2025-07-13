@@ -51,30 +51,30 @@ def build_index(matrix_path, index_path, n_neighbors=10, use_faiss=False):
 
 # 👇 استخدم هنا antique وفعّل FAISS فقط لـ dense
 if __name__ == "__main__":
-    dataset = "antique"
+    dataset = "quora"
     vector_store = "vector_stores"
 
-    # build_index(
-    #     matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib"),
-    #     index_path=os.path.join(vector_store, f"{dataset}_tfidf_index.joblib"),
-    #     use_faiss=False
-    # )
+    build_index(
+        matrix_path=os.path.join(vector_store, f"{dataset}_tfidf_matrix.joblib"),
+        index_path=os.path.join(vector_store, f"{dataset}_tfidf_index.joblib"),
+        use_faiss=False
+    )
 
-    # build_index(
-    #     matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
-    #     index_path=os.path.join(vector_store, f"{dataset}_word2vec_index.joblib"),
-    #     use_faiss=False
-    # )
+    build_index(
+        matrix_path=os.path.join(vector_store, f"{dataset}_word2vec_vectors.joblib"),
+        index_path=os.path.join(vector_store, f"{dataset}_word2vec_index.joblib"),
+        use_faiss=False
+    )
 
-    # build_index(
-    #     matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
-    #     index_path=os.path.join(vector_store, f"{dataset}_bert_index"),
-    #     use_faiss=True
-    # )
+    build_index(
+        matrix_path=os.path.join(vector_store, f"{dataset}_bert_vectors.joblib"),
+        index_path=os.path.join(vector_store, f"{dataset}_bert_index"),
+        use_faiss=True
+    )
 
     build_index(
         matrix_path=os.path.join(vector_store, f"{dataset}_hybrid_vectors.joblib"),
-        index_path=os.path.join(vector_store, f"{dataset}_hybrid_index.joblib"),
-        use_faiss=False  # ✅ استخدم NearestNeighbors
+        index_path=os.path.join(vector_store, f"{dataset}_hybrid_index"),
+        use_faiss=True  # ✅ نستخدم FAISS لأنه الآن dense
     )
 
